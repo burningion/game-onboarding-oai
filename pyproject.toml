@@ -7,4 +7,5 @@ requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.115.12",
     "openai-agents[voice]>=0.0.17",
+    "openai[voice-helpers]>=1.84.0",
 ]

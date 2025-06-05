@@ -8,3 +8,16 @@ There's a React frontend that lives in `frontend/`, and you can just do an `npm 
 
 Images, etc. get put in `assets/`.
 
+We use Doppler to manage secrets. To install:
+
+```
+brew install gnupg
+brew install dopplerhq/cli/doppler
+doppler login
+```
+
+Followed by a:
+
+```
+doppler run -- uv run main.py 
+```
