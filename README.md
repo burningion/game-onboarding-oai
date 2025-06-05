@@ -29,3 +29,5 @@ Assumes your environment variables are set:
 ```
 uvx -p 3.13 --with boxsdk --from mcp-server-box@0.1.2 mcp-server-box
 ```
+
+Look [here](https://github.com/openai/openai-agents-python/blob/main/examples/mcp/filesystem_example/main.py#L35-L50) for an example for how to wire it up.
