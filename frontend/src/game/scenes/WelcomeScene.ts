@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { audioManager } from '../../utils/audioManager';
 
 export default class WelcomeScene extends Phaser.Scene {
   private playerName: string = '';
@@ -18,6 +19,9 @@ export default class WelcomeScene extends Phaser.Scene {
     
     // Floor
     this.add.rectangle(0, height - 100, width, 100, 0x8B4513).setOrigin(0);
+
+    // Play Coach Blaze's greeting audio (step 1)
+    this.playCoachAudio(1);
 
     // Coach Blaze sprite
     this.coachBlaze = this.add.sprite(width - 200, height - 180, 'coach');
@@ -106,6 +110,9 @@ export default class WelcomeScene extends Phaser.Scene {
       "Press SPACE to continue!"
     );
 
+    // Play Coach Blaze's overview audio (step 2) 
+    this.playCoachAudio(2);
+
     // Wait for space key
     this.input.keyboard?.once('keydown-SPACE', () => {
       // Store player name in registry
@@ -113,5 +120,13 @@ export default class WelcomeScene extends Phaser.Scene {
       // Move to next scene
       this.scene.start('CoreValuesScene');
     });
+  }
+
+  private async playCoachAudio(step: number) {
+    try {
+      await audioManager.playAudio(`http://localhost:8000/coach_blaze?step=${step}`);
+    } catch (error) {
+      console.error(`Error playing coach audio step ${step}:`, error);
+    }
   }
 }

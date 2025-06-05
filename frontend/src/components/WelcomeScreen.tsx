@@ -12,36 +12,8 @@ export function WelcomeScreen({ onNext, className }: WelcomeScreenProps) {
   const handleNext = async () => {
     setIsLoading(true);
     
-    try {
-      // Fetch and play audio
-      const response = await fetch('http://localhost:8000/coach_blaze');
-      if (response.ok) {
-        const audioBlob = await response.blob();
-        const audioUrl = URL.createObjectURL(audioBlob);
-        const audio = new Audio(audioUrl);
-        
-        // Play audio and transition immediately when it starts
-        audio.play().then(() => {
-          // Audio started playing successfully
-          onNext();
-          
-          // Clean up URL when audio finishes
-          audio.onended = () => {
-            URL.revokeObjectURL(audioUrl);
-          };
-        }).catch((error) => {
-          console.error('Audio playback failed:', error);
-          setIsLoading(false);
-          onNext();
-        });
-      } else {
-        console.error('Failed to fetch audio');
-        onNext();
-      }
-    } catch (error) {
-      console.error('Error fetching audio:', error);
-      onNext();
-    }
+    // No audio here - just transition to the game
+    onNext();
   };
 
   return (
@@ -70,7 +42,7 @@ export function WelcomeScreen({ onNext, className }: WelcomeScreenProps) {
           }
         }}
       >
-        {isLoading ? 'Playing...' : 'Next'}
+        {isLoading ? 'Loading...' : 'Next'}
       </button>
     </div>
   );

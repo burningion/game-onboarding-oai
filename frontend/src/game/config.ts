@@ -4,6 +4,7 @@ import MenuScene from './scenes/MenuScene';
 import WelcomeScene from './scenes/WelcomeScene';
 import CoreValuesScene from './scenes/CoreValuesScene';
 import WorkScheduleScene from './scenes/WorkScheduleScene';
+import OnboardingSectionsScene from './scenes/OnboardingSectionsScene';
 import MainScene from './scenes/MainScene';
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -18,7 +19,7 @@ const config: Phaser.Types.Core.GameConfig = {
       debug: false
     }
   },
-  scene: [PreloadScene, MenuScene, WelcomeScene, CoreValuesScene, WorkScheduleScene, MainScene]
+  scene: [PreloadScene, MenuScene, WelcomeScene, CoreValuesScene, WorkScheduleScene, OnboardingSectionsScene, MainScene]
 };
 
 export default config;

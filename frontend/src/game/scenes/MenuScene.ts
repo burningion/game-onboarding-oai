@@ -46,6 +46,28 @@ export default class MenuScene extends Phaser.Scene {
       this.scene.start('WelcomeScene');
     });
 
+    // Sections Button
+    const sectionsButton = this.add.rectangle(width / 2, height / 2 + 120, 200, 50, 0x2196F3);
+    const sectionsText = this.add.text(width / 2, height / 2 + 120, 'View Sections', {
+      fontSize: '20px',
+      color: '#ffffff'
+    }).setOrigin(0.5);
+
+    // Make sections button interactive
+    sectionsButton.setInteractive({ useHandCursor: true });
+    
+    sectionsButton.on('pointerover', () => {
+      sectionsButton.setFillStyle(0x1976D2);
+    });
+    
+    sectionsButton.on('pointerout', () => {
+      sectionsButton.setFillStyle(0x2196F3);
+    });
+    
+    sectionsButton.on('pointerdown', () => {
+      this.scene.start('OnboardingSectionsScene');
+    });
+
     // Instructions
     this.add.text(width / 2, height - 100, 'Use Arrow Keys to Move, Space to Jump, E to Interact', {
       fontSize: '16px',
