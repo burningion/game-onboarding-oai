@@ -14,7 +14,7 @@ export function WelcomeScreen({ onNext, className }: WelcomeScreenProps) {
     
     try {
       // Fetch and play audio
-      const response = await fetch('http://localhost:8000/coach');
+      const response = await fetch('http://localhost:8000/coach_blaze');
       if (response.ok) {
         const audioBlob = await response.blob();
         const audioUrl = URL.createObjectURL(audioBlob);
