@@ -1,0 +1,40 @@
+{
+  "states": [
+    {
+      "id": "welcome",
+      "content": "Hello, and welcome to ACME Corporation..."
+    },
+    {
+      "id": "company_culture",
+      "content": "At ACME, we pride ourselves on our core values: Innovation, Integrity..."
+    },
+    {
+      "id": "employment_policies",
+      "content": "Let's start with our employment policies. ACME Corporation is an equal opportunity employer..."
+    },
+    {
+      "id": "compensation_benefits",
+      "content": "Regarding compensation, salaries are paid bi-weekly..."
+    },
+    {
+      "id": "professional_development",
+      "content": "We invest in your growth through an annual training budget..."
+    },
+    {
+      "id": "workplace_conduct_security",
+      "content": "Professional behavior is key at ACME..."
+    },
+    {
+      "id": "health_safety",
+      "content": "Your safety is important to us. Follow the health guidelines..."
+    },
+    {
+      "id": "leave_policies_end_of_employment",
+      "content": "We comply with FMLA requirements and provide generous leave options..."
+    },
+    {
+      "id": "confirmation_encouragement",
+      "content": "Do you have any questions or concerns that I can address?"
+    }
+  ]
+}
