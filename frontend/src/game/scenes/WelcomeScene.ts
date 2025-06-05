@@ -19,10 +19,25 @@ export default class WelcomeScene extends Phaser.Scene {
     // Floor
     this.add.rectangle(0, height - 100, width, 100, 0x8B4513).setOrigin(0);
 
-    // Coach Blaze placeholder (red square for now)
-    this.coachBlaze = this.add.sprite(width - 150, height - 150, 'coach');
-    this.coachBlaze.setScale(100, 100);
-    this.coachBlaze.setTint(0xFF0000);
+    // Coach Blaze sprite
+    this.coachBlaze = this.add.sprite(width - 200, height - 180, 'coach');
+    
+    // Check if we loaded the actual image or placeholder
+    if (this.textures.get('coach').key === 'coach' && this.textures.get('coach').source[0].width > 1) {
+      // Real image loaded - scale appropriately
+      this.coachBlaze.setScale(0.3); // Adjust scale as needed for the actual image
+    } else {
+      // Placeholder - use the original styling
+      this.coachBlaze.setScale(150, 180);
+      this.coachBlaze.setTint(0xFF0000);
+      
+      // Add "COACH" text on placeholder
+      this.add.text(width - 200, height - 180, 'COACH\nBLAZE', {
+        fontSize: '16px',
+        color: '#ffffff',
+        align: 'center'
+      }).setOrigin(0.5);
+    }
 
     // Speech bubble
     this.createSpeechBubble(

@@ -256,6 +256,15 @@ export default class WorkScheduleScene extends Phaser.Scene {
   }
 
   private showCoachIntro() {
+    // Add Coach Blaze
+    const coachSprite = this.add.sprite(120, 120, 'coach');
+    if (this.textures.get('coach').source[0].width > 1) {
+      coachSprite.setScale(0.2);
+    } else {
+      coachSprite.setScale(80, 100);
+      coachSprite.setTint(0xFF0000);
+    }
+    
     const bubble = this.createSpeechBubble(
       "Standard hours are 9-5, but 10-3 is prime time for team sprints!\n" +
       "Grab communication tools and avoid being late!\n" +
@@ -263,7 +272,10 @@ export default class WorkScheduleScene extends Phaser.Scene {
       100, 50
     );
 
-    this.time.delayedCall(5000, () => bubble.destroy());
+    this.time.delayedCall(5000, () => {
+      bubble.destroy();
+      coachSprite.destroy();
+    });
   }
 
   private createSpeechBubble(text: string, x: number, y: number): Phaser.GameObjects.Container {

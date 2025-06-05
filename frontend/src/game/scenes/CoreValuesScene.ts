@@ -122,6 +122,15 @@ export default class CoreValuesScene extends Phaser.Scene {
   }
 
   private showCoachHint() {
+    // Add Coach Blaze in corner
+    const coachSprite = this.add.sprite(100, 100, 'coach');
+    if (this.textures.get('coach').source[0].width > 1) {
+      coachSprite.setScale(0.15);
+    } else {
+      coachSprite.setScale(60, 80);
+      coachSprite.setTint(0xFF0000);
+    }
+    
     const hint = this.add.text(400, 100, 
       "Let's warm up with our core muscles—ACME's five values!\nThink of these as your daily reps for success!",
       {
@@ -133,8 +142,11 @@ export default class CoreValuesScene extends Phaser.Scene {
       }
     ).setOrigin(0.5);
 
-    // Remove hint after 5 seconds
-    this.time.delayedCall(5000, () => hint.destroy());
+    // Remove hint and coach after 5 seconds
+    this.time.delayedCall(5000, () => {
+      hint.destroy();
+      coachSprite.destroy();
+    });
   }
 
   update() {
