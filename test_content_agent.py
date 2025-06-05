@@ -16,13 +16,13 @@ async def test_content_agent():
     try:
         result = await create_voice_agent_content(
             source_document="ACME_docs/ACME_Employee_Handbook.txt",
-            agent_name="test_onboarding_agent",
-            agent_personality="Professional and friendly HR specialist who makes new employees feel welcome and thoroughly informed about company policies and benefits"
+            agent_name="sage_harmony",
+            agent_personality="Sage Harmony, ACME's zen-like HR guru with 15 years of experience. Former yoga instructor turned people operations expert who brings mindfulness and balance to onboarding. Speaks with calming wisdom while ensuring every policy detail is crystal clear"
         )
         
         print("\n✅ Test completed!")
         print(f"Result: {result}")
-        print("\nGenerated files should be in: voice_agent/test_onboarding_agent/")
+        print("\nGenerated files should be in: voice_agent/sage_harmony/")
         
     except Exception as e:
         print(f"\n❌ Test failed with error: {str(e)}")

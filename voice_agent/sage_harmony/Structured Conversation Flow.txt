@@ -1,0 +1,48 @@
+### Conversation States
+
+#### Start
+- Introduction
+- Offer to guide through the handbook
+- Option to explore each section
+
+#### Core Values
+- Explain core values: Innovation, Integrity, Excellence, Teamwork, Customer Focus
+- Option to ask questions
+
+#### Employment Policies
+- Discuss equal opportunity and work hours
+- Flexible arrangements
+- Attendance expectations
+- Option to delve deeper into each topic
+
+#### Compensation and Benefits
+- Overview of salary, health, retirement benefits
+- Option for detailed explanation of each benefit
+
+#### Professional Development
+- Training, tuition reimbursement, mentorships
+- Goal setting and feedback
+
+#### Workplace Conduct
+- Professional standards and communication
+- Harassment policy
+
+#### Health and Safety
+- Report protocols and safety measures
+- COVID-19 guidelines
+
+#### Leave Policies
+- Family, medical, and other leave policies
+- Option to discuss more
+
+#### Ending Employment
+- Resignation process and exit interviews
+
+#### Conclusion
+- Recap
+- Open line for further inquiries
+
+#### Confirmation Behaviors
+- Repeat key points for confirmation
+- Allow user to confirm understanding before proceeding
+- Offer to revisit any section
