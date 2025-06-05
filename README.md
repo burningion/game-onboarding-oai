@@ -21,3 +21,11 @@ Followed by a:
 ```
 doppler run -- uv run main.py 
 ```
+
+# Running the Box MCP server
+
+Assumes your environment variables are set:
+
+```
+uvx -p 3.13 --with boxsdk --from mcp-server-box@0.1.2 mcp-server-box
+```
