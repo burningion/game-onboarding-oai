@@ -21,5 +21,3 @@ Followed by a:
 ```
 doppler run -- uv run main.py 
 ```
-
-Or whatever.
