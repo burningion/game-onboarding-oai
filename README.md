@@ -1,6 +1,103 @@
 # Gamified Onboarding for OpenAI Agents Hackathon NYC
 
-# Repo structure
+A multi-agent system that transforms HR documents into interactive onboarding experiences using voice agents and gamification.
+
+## 🏗️ Multi-Agent Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              Multi-Agent Onboarding System                        │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                          │
+                    ┌─────────────────────┴─────────────────────┐
+                    │                                           │
+                    ▼                                           ▼
+        ┌──────────────────────┐                    ┌──────────────────────┐
+        │   CONTENT AGENT      │                    │   GAME GEN AGENT     │
+        │   (OpenAI SDK)       │                    │   (OpenAI SDK)       │
+        ├──────────────────────┤                    ├──────────────────────┤
+        │ • Analyzes HR docs   │                    │ • Creates game scenes│
+        │ • Extracts topics    │                    │ • Generates TypeScript│
+        │ • Creates voice      │                    │ • Designs mechanics  │
+        │   agent content      │                    │ • Maps learning goals│
+        └──────────┬───────────┘                    └──────────┬───────────┘
+                   │                                           │
+                   ▼                                           ▼
+        ┌──────────────────────┐                    ┌──────────────────────┐
+        │  Voice Agent Files   │                    │   Phaser.js Game     │
+        ├──────────────────────┤                    ├──────────────────────┤
+        │ • instructor.txt     │                    │ • Interactive levels │
+        │ • script.txt         │                    │ • Visual learning    │
+        │ • conversation.json  │                    │ • Progress tracking  │
+        └──────────┬───────────┘                    └──────────┬───────────┘
+                   │                                           │
+                   └─────────────────┬─────────────────────────┘
+                                     ▼
+                          ┌──────────────────────┐
+                          │   New Employee       │
+                          │   Experience         │
+                          ├──────────────────────┤
+                          │ • Voice interaction  │
+                          │ • Visual gameplay    │
+                          │ • Adaptive learning │
+                          └──────────────────────┘
+
+## Data Flow
+
+┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
+│    HR    │────▶│   Box    │────▶│ Content  │────▶│  Voice   │────▶│ Employee │
+│   Docs   │     │ Storage  │     │  Agent   │     │  Agent   │     │Onboarding│
+└──────────┘     └──────────┘     └──────────┘     └──────────┘     └──────────┘
+                        │                                   │
+                        │                                   │
+                        ▼                                   ▼
+                 ┌──────────┐                        ┌──────────┐
+                 │   Game   │                        │   Game   │
+                 │   Gen    │────────────────────────│ Frontend │
+                 │  Agent   │                        │ (React)  │
+                 └──────────┘                        └──────────┘
+```
+
+## 🤝 How the Agents Work Together
+
+### 1. **Content Agent** 📝
+- **Input**: HR documents (employee handbooks, policies, guides)
+- **Process**: Analyzes document structure, extracts key topics, generates conversational content
+- **Output**: Voice agent files (instructor.txt, script.txt, conversation.json)
+- **Model**: gpt-4o (configurable)
+
+### 2. **Game Generation Agent** 🎮
+- **Input**: Same HR documents or voice agent scripts
+- **Process**: Transforms content into interactive game mechanics
+- **Output**: Complete Phaser.js TypeScript scenes
+- **Model**: o3/gpt-4o (with fallback support)
+
+### 3. **Voice Agents** 🎙️
+- **Examples**: Coach Blaze (fitness-themed), Villain (challenging)
+- **Purpose**: Conduct conversational onboarding sessions
+- **Integration**: Can trigger game scenes or be triggered by game events
+
+### 4. **Game Frontend** 🕹️
+- **Framework**: React + Phaser.js
+- **Features**: 2D platformer with multiple levels
+- **Content**: Dynamically generated or hand-crafted scenes
+
+## 🔄 Agent Coordination Flow
+
+```
+1. HR uploads handbook to Box/local folder
+2. Content Agent processes document → creates voice agent
+3. Game Gen Agent processes document → creates game scenes  
+4. Employee starts onboarding:
+   - Voice agent introduces concepts
+   - Game provides visual reinforcement
+   - Progress tracked across both channels
+5. Analytics collected for HR insights
+```
+
+## 🚀 Quick Start
+
+### Prerequisites
 
 This repo uses `uv` for dependencies. You can do a `uv sync`, and you should have all of the Python dependencies to run the repo.
 
@@ -10,7 +107,7 @@ Images, etc. get put in `assets/`.
 
 We use Doppler to manage secrets. To install:
 
-```
+```bash
 brew install gnupg
 brew install dopplerhq/cli/doppler
 doppler login
@@ -18,7 +115,7 @@ doppler login
 
 Followed by a:
 
-```
+```bash
 doppler run -- uv run main.py 
 ```
 
@@ -232,6 +329,210 @@ Look [here](https://github.com/openai/openai-agents-python/blob/main/examples/mc
             print(f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}\n")
             await run(server)
 
+```
+
+# Game Generation Agent - Create Games with AI
+
+The Game Generation Agent uses OpenAI's Agents SDK with the o3 model to automatically generate Phaser.js game content from onboarding documents. It creates complete game scenes, configurations, and mini-games in real-time.
+
+## Features
+
+- **Real-time Scene Generation**: Creates complete Phaser.js scenes from onboarding content
+- **Multiple Game Types**: Supports platformers, collection games, puzzles, quizzes, and simulations
+- **Mini-game Creation**: Generates focused mini-games for specific concepts
+- **Scene Enhancement**: Improves existing scenes with visual effects, gameplay mechanics, or accessibility
+- **Complete Game Generation**: Creates entire games from HR documents automatically
+
+## Quick Start
+
+### Interactive Mode (Recommended)
+
+```bash
+uv run python run_game_agent.py
+```
+
+This will:
+1. List available onboarding documents
+2. Let you choose a document and name your game
+3. Generate complete game scenes for each section
+4. Create game configuration files
+5. Save everything to the frontend directory
+
+### Generate Full Game
+
+```bash
+uv run python run_game_agent.py \
+  --document ACME_docs/ACME_Employee_Handbook.txt \
+  --name benefits_adventure \
+  --model o3
+```
+
+### Generate Single Scene
+
+```bash
+uv run python run_game_agent.py \
+  --scene SecurityChallengeScene \
+  --type puzzle \
+  --model gpt-4o
+```
+
+### Enhance Existing Scene
+
+```bash
+uv run python run_game_agent.py \
+  --enhance frontend/src/game/scenes/CoreValuesScene.ts \
+  --enhancement-type visual
+```
+
+## Using the o3 Model
+
+The agent is configured to use OpenAI's o3 model by default. If you haven't verified your organization for o3 access:
+
+1. Visit https://platform.openai.com/settings/organization/general
+2. Complete organization verification
+3. Set your API key in `.env`
+
+Fallback models (gpt-4o, gpt-4-turbo-preview) will be used automatically if o3 is unavailable.
+
+## Generated Output
+
+The agent creates:
+
+```
+frontend/
+├── src/
+│   ├── game/
+│   │   ├── scenes/
+│   │   │   └── generated/
+│   │   │       ├── BenefitsScene1.ts
+│   │   │       ├── BenefitsScene2.ts
+│   │   │       └── benefits_adventure_summary.json
+│   │   └── configs/
+│   │       └── benefits_adventure_config.ts
+│   └── public/
+│       └── assets/
+│           └── generated/
+│               └── (asset specifications)
+```
+
+## Scene Types
+
+- **platformer**: Side-scrolling levels with jumping and obstacles
+- **collection**: Gather items representing concepts (benefits, values)
+- **puzzle**: Drag-and-drop or matching games for policies
+- **quiz**: Interactive Q&A for knowledge checks
+- **simulation**: Role-playing scenarios for real situations
+
+## Example: Benefits Collection Game
+
+```python
+import asyncio
+from game_generation_agent import GameGenerationAgent
+
+async def create_benefits_game():
+    agent = GameGenerationAgent(model="o3")
+    await agent.create_agent()
+    
+    result = await agent.generate_game_scene(
+        scene_name="BenefitsMarketplace",
+        onboarding_content="""
+        - Medical, Dental, Vision insurance
+        - 401(k) with 6% match
+        - 15 PTO days, 10 holidays
+        """,
+        scene_type="collection"
+    )
+    
+    print(result["scene_code"])
+
+asyncio.run(create_benefits_game())
+```
+
+## Integration with Existing Game
+
+1. Generate scenes for your content
+2. Copy generated TypeScript files to your game
+3. Import scenes in your game config
+4. Add generated assets to public folder
+5. Play your AI-generated onboarding game!
+
+## 🎯 Complete Example: Building an Onboarding Experience
+
+### Step 1: Generate Voice Agent from HR Document
+
+```bash
+# Interactive mode
+uv run python run_content_agent.py
+
+# Or batch mode
+uv run python run_content_agent.py --batch agent_config.json
+```
+
+This creates:
+```
+voice_agent/
+└── onboarding_specialist/
+    ├── instructor.txt      # Personality & tone
+    ├── script.txt         # Dialogue script
+    └── conversation.json  # Conversation flow
+```
+
+### Step 2: Generate Game Scenes
+
+```bash
+# Generate complete game from document
+uv run python run_game_agent.py \
+  --document ACME_docs/ACME_Employee_Handbook.txt \
+  --name benefits_adventure
+
+# Or interactive mode
+uv run python run_game_agent.py
+```
+
+This creates:
+```
+frontend/src/game/scenes/generated/
+├── WelcomeScene.ts
+├── CoreValuesScene.ts
+├── BenefitsScene.ts
+├── SecurityScene.ts
+└── game_summary.json
+```
+
+### Step 3: Run the Complete Experience
+
+```bash
+# Terminal 1: Start the game
+cd frontend && npm start
+
+# Terminal 2: Run voice agent (example)
+uv run python voice_agent.py --agent onboarding_specialist
+
+# Terminal 3: Monitor with Box integration
+uvx -p 3.13 --with boxsdk --from mcp-server-box@0.1.2 mcp-server-box
+```
+
+### Step 4: Employee Experience
+
+1. **Voice Introduction**: Coach Blaze greets the employee
+2. **Interactive Game**: Employee plays through onboarding levels
+3. **Dynamic Content**: Both voice and game adapt to progress
+4. **Completion**: Certificate and analytics generated
+
+## 🧪 Testing Everything
+
+```bash
+# Test content agent
+uv run python test_content_agent.py
+
+# Test game generation
+uv run python test_game_agent.py
+
+# Test full pipeline
+uv run python test_full_game_generation.py
+
+# Run all tests
+uv run python test_run_all.py
 ```
 
 # Future Roadmap

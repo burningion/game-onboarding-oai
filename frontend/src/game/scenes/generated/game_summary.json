@@ -1,0 +1,69 @@
+{
+  "game_name": "ACME Onboarding Adventure",
+  "scenes": [
+    {
+      "name": "WelcomeScene",
+      "type": "platformer",
+      "assets": [
+        "`assets/platform.png`: Image for platforms",
+        "`assets/background.png`: Background image",
+        "`assets/collectible.png`: Image for collectibles",
+        "`assets/player.png`: Sprite sheet for player animations (32x48 per frame)"
+      ],
+      "objectives": [
+        "Understand the company culture of ACME Corp.",
+        "Recognize the importance of innovation, collaboration, and integrity.",
+        "Learn about the company's commitment to diversity, inclusion, and customer-first approaches.",
+        "Appreciate the value of continuous learning and work-life balance.",
+        "Emphasize the importance of sustainability."
+      ]
+    },
+    {
+      "name": "CoreValuesScene",
+      "type": "collection",
+      "assets": [
+        "`assets/background.png`: Background image for the scene",
+        "`assets/valueIcon.png`: Icon representing a core value",
+        "`assets/collectSound.mp3`: Sound effect for collecting a core value"
+      ],
+      "objectives": [
+        "Understand and remember ACME's core values: Innovation, Integrity, Excellence, Teamwork, and Customer Focus.",
+        "Recognize the importance of each value through visual and interactive feedback.",
+        "Associate positive actions (collecting values) with learning and reinforcing these core concepts."
+      ]
+    },
+    {
+      "name": "BenefitsScene",
+      "type": "collection",
+      "assets": [
+        "`assets/background.png`: Background image for the scene",
+        "`assets/benefit.png`: Image representing a benefit collectible",
+        "`assets/collect.mp3`: Sound effect for collecting a benefit"
+      ],
+      "objectives": [
+        "Familiarize employees with the range of benefits offered by the company.",
+        "Reinforce the understanding of each benefit through interactive engagement.",
+        "Encourage exploration and retention of important employment information."
+      ]
+    },
+    {
+      "name": "SecurityScene",
+      "type": "puzzle",
+      "assets": [
+        "`assets/security_background.png`: Background image for the scene",
+        "`assets/puzzle_piece.png`: Image for puzzle pieces representing security policies",
+        "`assets/lock.png`: Used as a decorative item to reinforce security theme"
+      ],
+      "objectives": [
+        "Understand the importance of creating strong passwords",
+        "Recognize the necessity of two-factor authentication",
+        "Learn to identify and report suspicious emails",
+        "Emphasize the need to lock computers when unattended",
+        "Reinforce the policy of not sharing credentials",
+        "Highlight the requirement for annual security training"
+      ]
+    }
+  ],
+  "total_scenes": 4,
+  "generated_at": "2025-06-05T15:10:22.222330"
+}
