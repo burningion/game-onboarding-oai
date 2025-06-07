@@ -1,6 +1,10 @@
 # Gamified Onboarding for OpenAI Agents Hackathon NYC
 
-A multi-agent system that transforms HR documents into interactive onboarding experiences using voice agents and gamification.
+This app won 2nd place at the OpenAI Agents hackathon for NYC Tech Week
+
+![We won 2nd place!](./assets/winners.jpg)
+
+It's a multi-agent system that transforms HR documents into video games using voice agents and gamification.
 
 ## 📋 Project Description
 
