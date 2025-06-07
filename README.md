@@ -9,7 +9,8 @@ It's a multi-agent system that transforms HR documents into video games using vo
 ## 📋 Project Description
 
 ### Overview
-This project revolutionizes employee onboarding by combining AI-powered voice agents with interactive gaming experiences. Using OpenAI's latest models and agent capabilities, we automatically transform dry HR documents into engaging, personalized onboarding journeys that employees actually enjoy.
+
+Using OpenAI's voice models and the Python Agent framework, we automatically transform dry HR documents into engaging, personalized onboarding games that employees actually enjoy.
 
 ### The Problem
 - Traditional onboarding is boring and ineffective
@@ -28,7 +29,6 @@ We built a multi-agent system that:
 ### Key Features
 - 🤖 **AI Voice Agents**: Conversational onboarding with personality (Coach Blaze, etc.)
 - 🎮 **Auto-Generated Games**: Phaser.js levels created from document content
-- 📊 **Real-time Analytics**: Track completion, understanding, and engagement
 - 🔄 **Multi-modal Learning**: Voice, visual, and interactive elements
 - 📁 **Flexible Storage**: Support for local and cloud document storage
 - 🚀 **Instant Deployment**: Generate complete onboarding in minutes
@@ -65,26 +65,7 @@ We built a multi-agent system that:
 - **npm/uv** - Package management
 - **Local/Cloud Storage** - Flexible document management
 
-### Key Libraries
-```json
-{
-  "backend": {
-    "openai": "^1.0.0",
-    "python-dotenv": "^1.0.0",
-    "pydantic": "^2.0.0"
-  },
-  "frontend": {
-    "react": "^18.2.0",
-    "phaser": "^3.70.0",
-    "typescript": "^5.0.0",
-    "tailwindcss": "^3.3.0",
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0"
-  }
-}
-```
-
-## 🎯 Use Cases & Impact
+## Use Cases & Impact
 
 ### Primary Use Cases
 1. **New Employee Onboarding** - Transform boring orientations into engaging experiences
