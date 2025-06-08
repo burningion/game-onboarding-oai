@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 export default class CoreValuesScene extends Phaser.Scene {
     private score: number = 0;
-    private scoreText: Phaser.GameObjects.Text;
+    private scoreText!: Phaser.GameObjects.Text;
     private coreValues: { name: string, description: string }[];
 
     constructor() {
@@ -49,7 +49,7 @@ export default class CoreValuesScene extends Phaser.Scene {
         // Score text
         this.scoreText = this.add.text(16, 16, 'Score: 0', {
             fontSize: '32px',
-            fill: '#000'
+            color: '#000'
         });
     }
 
@@ -71,7 +71,7 @@ export default class CoreValuesScene extends Phaser.Scene {
     private showValueDescription(value: { name: string, description: string }) {
         const descriptionText = this.add.text(400, 300, `${value.name}: ${value.description}`, {
             fontSize: '24px',
-            fill: '#fff',
+            color: '#fff',
             backgroundColor: '#000',
             padding: { x: 10, y: 5 },
             align: 'center'

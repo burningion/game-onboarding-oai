@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 export default class SecurityScene extends Phaser.Scene {
     private score: number;
-    private securityItems: Phaser.GameObjects.Group;
+    private securityItems!: Phaser.GameObjects.Group;
 
     constructor() {
         super({ key: 'SecurityScene' });
@@ -28,11 +28,12 @@ export default class SecurityScene extends Phaser.Scene {
             const puzzlePiece = child as Phaser.Physics.Arcade.Image;
             puzzlePiece.setInteractive();
             puzzlePiece.on('pointerdown', () => this.collectItem(puzzlePiece));
+            return true;
         });
 
-        this.add.text(10, 10, 'Score: 0', { fontSize: '16px', fill: '#fff' }).setOrigin(0, 0).setScrollFactor(0);
+        this.add.text(10, 10, 'Score: 0', { fontSize: '16px', color: '#fff' }).setOrigin(0, 0).setScrollFactor(0);
 
-        this.add.text(100, 550, 'Assemble the security puzzle by selecting correct policies!', { fontSize: '18px', fill: '#ffffff' });
+        this.add.text(100, 550, 'Assemble the security puzzle by selecting correct policies!', { fontSize: '18px', color: '#ffffff' });
         
         this.physics.world.setBoundsCollision(true, true, true, true);
     }
@@ -44,7 +45,7 @@ export default class SecurityScene extends Phaser.Scene {
     private collectItem(puzzlePiece: Phaser.Physics.Arcade.Image) {
         this.score += 10;
         puzzlePiece.setVisible(false);
-        this.add.text(puzzlePiece.x, puzzlePiece.y, '+10', { fontSize: '18px', fill: '#0f0' }).setScrollFactor(0).setAlpha(1).setInteractive();
+        this.add.text(puzzlePiece.x, puzzlePiece.y, '+10', { fontSize: '18px', color: '#0f0' }).setScrollFactor(0).setAlpha(1).setInteractive();
         this.updateScore();
     }
 

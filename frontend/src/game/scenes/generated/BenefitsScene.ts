@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 export default class BenefitsScene extends Phaser.Scene {
     private benefitsCollected: number;
     private collectionGoal: number;
-    private scoreText: Phaser.GameObjects.Text;
+    private scoreText!: Phaser.GameObjects.Text;
 
     constructor() {
         super({ key: 'BenefitsScene' });
@@ -22,7 +22,7 @@ export default class BenefitsScene extends Phaser.Scene {
 
         this.scoreText = this.add.text(16, 16, 'Benefits Collected: 0/6', {
             fontSize: '32px',
-            fill: '#ffffff'
+            color: '#ffffff'
         });
 
         for (let i = 0; i < this.collectionGoal; i++) {
@@ -52,7 +52,7 @@ export default class BenefitsScene extends Phaser.Scene {
         if (this.benefitsCollected === this.collectionGoal) {
             this.add.text(200, 300, 'All Benefits Collected!', {
                 fontSize: '48px',
-                fill: '#00ff00'
+                color: '#00ff00'
             });
         }
     }

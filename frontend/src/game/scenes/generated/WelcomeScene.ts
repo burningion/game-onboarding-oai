@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
 
 export default class WelcomeScene extends Phaser.Scene {
-    private player: Phaser.Physics.Arcade.Sprite;
-    private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+    private player!: Phaser.Physics.Arcade.Sprite;
+    private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
     private score: number = 0;
-    private scoreText: Phaser.GameObjects.Text;
+    private scoreText!: Phaser.GameObjects.Text;
 
     constructor() {
         super({ key: 'WelcomeScene' });
@@ -50,7 +50,7 @@ export default class WelcomeScene extends Phaser.Scene {
             repeat: -1
         });
 
-        this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard!.createCursorKeys();
 
         const collectibles = this.physics.add.group({
             key: 'collectible',
@@ -61,12 +61,13 @@ export default class WelcomeScene extends Phaser.Scene {
         collectibles.children.iterate((child: Phaser.GameObjects.GameObject) => {
             const collectible = child as Phaser.Physics.Arcade.Image;
             collectible.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+            return true;
         });
 
         this.physics.add.collider(this.player, platforms);
         this.physics.add.collider(collectibles, platforms);
 
-        this.physics.add.overlap(this.player, collectibles, this.collectCollectible, null, this);
+        this.physics.add.overlap(this.player, collectibles, this.collectCollectible, undefined, this);
 
         this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', color: '#000' });
     }
@@ -83,12 +84,12 @@ export default class WelcomeScene extends Phaser.Scene {
             this.player.anims.play('turn');
         }
 
-        if (this.cursors.up.isDown && this.player.body.touching.down) {
+        if (this.cursors.up.isDown && this.player.body!.touching.down) {
             this.player.setVelocityY(-330);
         }
     }
 
-    private collectCollectible(player: Phaser.GameObjects.GameObject, collectible: Phaser.GameObjects.GameObject) {
+    private collectCollectible = (player: Phaser.Types.Physics.Arcade.GameObjectWithBody | Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody | Phaser.Tilemaps.Tile, collectible: Phaser.Types.Physics.Arcade.GameObjectWithBody | Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody | Phaser.Tilemaps.Tile) => {
         const item = collectible as Phaser.Physics.Arcade.Image;
         item.disableBody(true, true);
 

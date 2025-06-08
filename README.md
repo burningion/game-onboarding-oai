@@ -211,6 +211,8 @@ Followed by a:
 doppler run -- uv run main.py 
 ```
 
+You'll need to have both the FastAPI server (`uv run main.py`) _and_ the frontend server (`npm start`) running in order to play the game.
+
 # Content Agent - Generate Voice Agents from HR Documents
 
 The Content Agent uses OpenAI's Agents SDK to automatically generate voice agent content from company documents (like employee handbooks). It creates the personality instructions, dialogue scripts, and conversation flows needed for voice-based onboarding agents.
