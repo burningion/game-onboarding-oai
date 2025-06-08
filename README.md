@@ -4,6 +4,8 @@ This app won 2nd place at the OpenAI Agents hackathon for NYC Tech Week
 
 ![We won 2nd place!](./assets/winners.jpg)
 
+[![Watch a video of how](./assets/youtube.png)](https://www.youtube.com/watch?v=ACG8W5rzS3o)
+
 It's a multi-agent system that transforms HR documents into video games using voice agents and gamification.
 
 ## 📋 Project Description
